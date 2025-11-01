@@ -11,13 +11,15 @@ class Solution:
 
         return dp[n-1]
         """
-        count = 0
-        farthest = 0
-        currentEnd = 0
+        count = 0 # stores num of jumps
+        farthest = 0 # stores the farthest i can go with count jumps
+        currentEnd = 0 # add a jump when i reach the end of a range
         n = len(nums)
         for i in range(n-1):
-            farthest = max(farthest, i+nums[i]) # check if jumping will go farther than cur
-            if i == currentEnd: # have not explored further
+            farthest = max(farthest, i+nums[i]) # update farthest range
+            if i == currentEnd: # must jump
                 count += 1
                 currentEnd = farthest
+                if currentEnd >= n-1:
+                    break
         return count
