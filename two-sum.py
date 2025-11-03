@@ -3,6 +3,6 @@ class Solution:
         find = {}
         for i in range(len(nums)):
             if nums[i] in find:
-                return [i, find.get(nums[i])]
+                return [find.get(nums[i]), i]
             else:
                 find[target-nums[i]] = i
